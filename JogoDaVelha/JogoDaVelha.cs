@@ -11,6 +11,7 @@ namespace JogoDaVelha
 
         private int quantidade;
 
+        //Criação do construtor do Jogo da Velha
         public JogoDaVelha()
         {
             fimJogo = false;
@@ -23,6 +24,7 @@ namespace JogoDaVelha
 
         }
 
+        //criação do metodo para ler o inciar do jogo
         public void Iniciar()
         {
             while (!fimJogo)
@@ -36,7 +38,7 @@ namespace JogoDaVelha
 
             }
         }
-
+        //metodo para verificar o fim do jogo apos o preenchimento das lacunas
         private void VerificarFimJogo()
         {
             if (quantidade < 5)
@@ -57,6 +59,7 @@ namespace JogoDaVelha
             }
         }
 
+        //metodo para validar a vitoria horizontal
         private bool VitoriaHorizontal()
         {
             bool linha1 = posicoes[0] == posicoes[1] && posicoes[0] == posicoes[2];
@@ -65,6 +68,7 @@ namespace JogoDaVelha
 
             return linha1 || linha2 || linha3;
         }
+        //metodo para validar  a vitoria vertical
         private bool VitoriaVertical()
         {
             bool linha1 = posicoes[0] == posicoes[3] && posicoes[0] == posicoes[6];
@@ -73,6 +77,7 @@ namespace JogoDaVelha
 
             return linha1 || linha2 || linha3;
         }
+        //metodo para validar a vitoria diagonal 
         private bool VitoriaDiagonal()
         {
             bool linha1 = posicoes[2] == posicoes[4] && posicoes[2] == posicoes[6];
@@ -82,6 +87,7 @@ namespace JogoDaVelha
             return linha1 || linha2;
         }
 
+        //Metodo MutarVez
         private void mudarVez()
         {
             if (vez == 'X')
@@ -91,7 +97,7 @@ namespace JogoDaVelha
             else
                 vez = 'X';
         }
-
+        //metodo para ler a vez do usuario
         private void escolhaUsuario()
         {
             Console.WriteLine($"Agora é a vez de {vez} , entre uma posição disponivel na tabela");
@@ -105,14 +111,17 @@ namespace JogoDaVelha
             }
 
             PreencherEscolha(posicaoEscolhida);
+
         }
+
+        //metodo para preencher a escolha do usuario
         private void PreencherEscolha(int posicaoEscolhida)
         {
             int i = posicaoEscolhida - 1;
             posicoes[i] = vez;
             quantidade++;
         }
-
+        //metodo para validar a escolha do usuario
         private bool ValidarEscolhaUs(int posicaoEscolhida)
         {
             int i = posicaoEscolhida - 1;
@@ -120,12 +129,14 @@ namespace JogoDaVelha
         }
 
       
+        //metodo para ler e limpar a tabela
         private void renderTabela()
         {
             Console.Clear();
             Console.WriteLine(Tabela());
         }
 
+        //metodo para gerar a tabela
         private string Tabela()
         {
             return $"__{posicoes[0]}__|__{posicoes[1]}__|__{posicoes[2]}__\n" +
