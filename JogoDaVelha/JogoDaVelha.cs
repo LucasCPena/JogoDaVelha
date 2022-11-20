@@ -1,7 +1,7 @@
 ﻿using System;
 namespace JogoDaVelha
 {
-     class JogoDaVelha
+    class JogoDaVelha
     {
         private bool fimJogo;
 
@@ -14,13 +14,13 @@ namespace JogoDaVelha
         public JogoDaVelha()
         {
             fimJogo = false;
-            posicoes = new []
+            posicoes = new[]
             {
                 '1','2','3','4','5','6','7','8','9'
             };
             vez = 'X';
             quantidade = 0;
-                
+
         }
 
         public void Iniciar()
@@ -39,12 +39,12 @@ namespace JogoDaVelha
 
         private void VerificarFimJogo()
         {
-            if(quantidade < 5)
+            if (quantidade < 5)
             {
                 return;
             }
 
-            if(VitoriaHorizontal() || VitoriaVertical() || VitoriaDiagonal())
+            if (VitoriaHorizontal() || VitoriaVertical() || VitoriaDiagonal())
             {
                 fimJogo = true;
                 Console.WriteLine($"Fim de jogo! Vitoria do: {vez}");
@@ -77,14 +77,20 @@ namespace JogoDaVelha
         {
             bool linha1 = posicoes[2] == posicoes[4] && posicoes[2] == posicoes[6];
             bool linha2 = posicoes[0] == posicoes[4] && posicoes[0] == posicoes[8];
-            
+
 
             return linha1 || linha2;
         }
 
         private void mudarVez()
         {
-            vez = vez == 'X' ? 'O' : 'X';
+            if (vez == 'X')
+            {
+                vez = 'O';
+            }
+            else
+                vez = 'X';
+
         }
 
         private void escolhaUsuario()
