@@ -90,7 +90,6 @@ namespace JogoDaVelha
             }
             else
                 vez = 'X';
-
         }
 
         private void escolhaUsuario()
